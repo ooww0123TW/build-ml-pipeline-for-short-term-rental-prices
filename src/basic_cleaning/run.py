@@ -44,6 +44,9 @@ def clean(args):
         num_rows -
         len(d_f))
 
+    idx = d_f['longitude'].between(-74.25, -73.50) & d_f['latitude'].between(40.5, 41.2)
+    d_f = d_f[idx].copy()
+
     d_f.to_csv("clean_sample.csv", index=False)
 
     artifact = wandb.Artifact(
